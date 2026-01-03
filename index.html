@@ -7,82 +7,98 @@
 </head>
 <body>
 
-<!-- Top Navbar -->
+<!-- Navbar -->
 <header class="navbar">
     <div class="auth">
-        <a href="login.html">Login</a>
-        <a href="signup.html" class="signup">Create Account</a>
+        <a href="./login.html">Login</a>
+        <a href="./signup.html" class="signup">Create Account</a>
     </div>
 
     <nav class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="women safety.html">Women Safety</a>
-        <a href="#">Complaints</a>
-        <a href="about us .html">About Us</a>
-        <a href="contact us.html">Contact Us</a>
+        <a href="./index.html">Home</a>
+        <a href="./womensafety.html">Women Safety</a>
+        <a href="./report issue.html">Complaints</a>
+        <a href="./about us.html">About Us</a>
+        <a href="./contact us.html">Contact Us</a>
     </nav>
 </header>
 
 <!-- Main Layout -->
 <div class="container">
 
-    <!-- Left Dashboard -->
+    <!-- Sidebar -->
     <aside class="sidebar">
         <h2>Dashboard</h2>
-        <ul>
-            <li>Report Issue</li>
-            <li>My Complaints</li>
-            <li>Complaint Status</li>
-            <li>Emergency Help</li>
-            <li>Settings</li>
-        </ul>
+        <button onclick="location.href='./report issue.html'">Report Issue</button>
+        <button onclick="location.href='./my complaint.html'">My Complaints</button>
+        <button onclick="location.href='./complaint status.html'">Complaint Status</button>
+        <button onclick="location.href='./womensafety.html'">Emergency Help</button>
+        <button onclick="location.href='./settings.html'">Settings</button>
+        <button onclick="location.href='./category.html'">Category-Wise</button>
     </aside>
 
     <!-- Main Content -->
-    <main class="content">
-        <h1>Crowdsourced Civic Issue Reporting</h1>
+    <section class="main-area">
 
-        <p class="center-text">
-            This platform empowers citizens to actively participate in improving
-            their city by reporting real-time civic issues directly to authorities.
-        </p>
+        <!-- Image Slider -->
+        <div class="slider">
+            <div class="slides" id="slides">
+                <img src="./Potholes.webp" alt="Potholes">
+                <img src="./Garbage Overflow.jpg" alt="Garbage">
+                <img src="./Broken Street Lights.jpg" alt="Street Lights">
+                <img src="./Water Leakage.jpg" alt="Water Leakage">
+                <img src="./Open Drains.webp" alt="Road Damage">
+                <img src="./Unsafe Public Places.jpg" alt="Public Safety">
+            </div>
 
-        <p class="center-text">
-            By using technology and community participation, the system ensures
-            transparency, accountability, and faster issue resolution, helping
-            build safer and smarter urban environments.
-        </p>
+            <button class="nav prev" onclick="moveSlide(-1)">❮</button>
+            <button class="nav next" onclick="moveSlide(1)">❯</button>
 
-        <p class="center-text">
-            Government departments can efficiently manage complaints, track
-            performance, and analyze problem-prone areas using centralized data.
-        </p>
-
-        <div class="problem-box">
-            <h3>Common Civic Issues</h3>
-            <ul>
-                <li>Potholes</li>
-                <li>Garbage Overflow</li>
-                <li>Broken Street Lights</li>
-                <li>Water Leakage</li>
-                <li>Open Drains</li>
-                <li>Unsafe Public Places</li>
-            </ul>
+            <div class="counter" id="counter">1 / 6</div>
         </div>
-    </main>
 
+        <!-- Text Content (Below Image) -->
+        <div class="content">
+            <h1>Crowdsourced Civic Issue Reporting</h1>
+
+            <p>
+                This platform empowers citizens to actively participate in improving
+                their city by reporting civic issues directly to government authorities.
+            </p>
+
+            <p>
+                By using technology and community participation, the system ensures
+                transparency, accountability, and faster resolution of problems.
+            </p>
+
+            <p>
+                Authorities can analyze issue trends, prioritize resources, and
+                enhance public service delivery using centralized data.
+            </p>
+
+            <div class="problem-box">
+                <h3>Common Civic Issues</h3>
+                <ul>
+                    <li>Potholes</li>
+                    <li>Garbage Overflow</li>
+                    <li>Broken Street Lights</li>
+                    <li>Water Leakage</li>
+                    <li>Open Drains</li>
+                    <li>Unsafe Public Places</li>
+                </ul>
+            </div>
+        </div>
+
+    </section>
 </div>
 
 <!-- Footer -->
 <footer class="footer">
-
     <div class="footer-about">
         <h3>About Us</h3>
         <p>
-            The Crowdsourced Civic Issue Reporting & Resolution System is a digital
-            governance initiative aimed at strengthening communication between
-            citizens and government bodies. Our goal is to ensure transparent,
-            efficient, and timely resolution of civic problems using technology.
+            A digital governance platform bridging citizens and government bodies
+            to ensure transparent, efficient, and timely civic issue resolution.
         </p>
     </div>
 
@@ -96,9 +112,25 @@
     <p class="copyright">
         © 2026 Civic Issue Reporting System | All Rights Reserved
     </p>
-
 </footer>
+
+<!-- Slider Script -->
+<script>
+let index = 0;
+const slides = document.getElementById("slides");
+const total = slides.children.length;
+const counter = document.getElementById("counter");
+
+function moveSlide(step) {
+    index += step;
+    if (index < 0) index = total - 1;
+    if (index >= total) index = 0;
+    slides.style.transform = `translateX(-${index * 100}%)`;
+    counter.innerText = `${index + 1} / ${total}`;
+}
+
+setInterval(() => moveSlide(1), 4000);
+</script>
 
 </body>
 </html>
-
