@@ -1,76 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Women Safety | Civic Issue Reporting System</title>
-    <link rel="stylesheet" href="./ws.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women Safety | PUBLICFIX</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="modern.css">
 </head>
+
 <body>
+    <header class="navbar glass-nav"
+        style="padding: 15px 40px; display:flex; justify-content:space-between; align-items:center;">
+        <h2
+            style="margin:0; font-weight:700; background: linear-gradient(to right, #fb7185, #ef4444); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+            Women Safety</h2>
+        <div id="authSection"></div>
+    </header>
 
-<!-- Navbar -->
-<header class="navbar">
-    <h2>Women Safety</h2>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="women-safety.html">Women Safety</a>
-        <a href="settings.html">Settings</a>
-    </nav>
-</header>
+    <div class="container"
+        style="max-width: 900px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 30px;">
+        <!-- Emergency Helpline -->
+        <div class="glass-card animate-in" style="padding: 30px; border-left: 4px solid #f43f5e;">
+            <h3 style="margin-top:0; color:#f43f5e;">Emergency Helplines</h3>
+            <div style="display:grid; gap:15px; margin-top:20px;">
+                <div
+                    style="background:rgba(244,63,94,0.1); padding:15px; border-radius:12px; border:1px solid rgba(244,63,94,0.2);">
+                    <div style="font-weight:700; color:#fb7185;">Women Helpline</div>
+                    <div style="font-size:24px; font-weight:900; color:white;">📞 1091</div>
+                </div>
+                <!-- ... other helplines ... -->
+                <div
+                    style="background:rgba(244,63,94,0.1); padding:15px; border-radius:12px; border:1px solid rgba(244,63,94,0.2);">
+                    <div style="font-weight:700; color:#fb7185;">Police Emergency</div>
+                    <div style="font-size:24px; font-weight:900; color:white;">📞 100 / 112</div>
+                </div>
+            </div>
 
-<!-- Main Content -->
-<main class="content">
+            <button class="btn"
+                style="margin-top:25px; background:#f43f5e; color:white; font-weight:700; font-size:18px;">🚨 TRIGGER
+                EMERGENCY SOS</button>
+        </div>
 
-    <section class="sos-section">
-        <h1>Emergency SOS</h1>
-        <p>Press the button below to send an emergency alert with your live location.</p>
-        <button class="sos-btn">🚨 SOS</button>
-    </section>
+        <!-- Safety Feed -->
+        <div id="safetyFeed">
+            <div style="text-align:center; padding:50px; color:var(--text-muted);">Loading community safety alerts...
+            </div>
+        </div>
+    </div>
 
-    <section class="unsafe-report">
-        <h2>Report Unsafe Area</h2>
-        <form>
-            <label>Location</label>
-            <input type="text" placeholder="Enter location">
+    <!-- Modular Scripts -->
+    <script type="module">
+        import { CityCore } from './core.js';
+        import { FeedService } from './feed-service.js';
 
-            <label>Issue Type</label>
-            <select>
-                <option>Poor Lighting</option>
-                <option>Harassment Area</option>
-                <option>Isolated Place</option>
-                <option>Suspicious Activity</option>
-            </select>
-
-            <label>Description</label>
-            <textarea placeholder="Describe the issue"></textarea>
-
-            <button type="submit">Report Area</button>
-        </form>
-    </section>
-
-    <section class="helpline">
-        <h2>Emergency Helplines</h2>
-        <ul>
-            <li>🚓 Police: <strong>112</strong></li>
-            <li>👩 Women Helpline: <strong>181 / 1091</strong></li>
-            <li>🚑 Ambulance: <strong>108</strong></li>
-        </ul>
-    </section>
-
-    <section class="awareness">
-        <h2>Safety Tips</h2>
-        <ul>
-            <li>Always share your location with trusted contacts</li>
-            <li>Avoid poorly lit areas at night</li>
-            <li>Trust your instincts</li>
-            <li>Use SOS in emergencies without hesitation</li>
-        </ul>
-    </section>
-
-</main>
-
-<footer class="footer">
-    <p>© 2026 Civic Issue Reporting System</p>
-</footer>
-
+        CityCore.initAuthMonitor("authSection");
+        FeedService.initFeed("safetyFeed", 10);
+    </script>
 </body>
+
 </html>
