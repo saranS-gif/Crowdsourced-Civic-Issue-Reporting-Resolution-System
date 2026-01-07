@@ -1,136 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Civic Issue Reporting System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PublicFix | Civic Issue Reporting</title>
+    <!-- Performance: Defer scripts and preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="modern.css">
 </head>
+
 <body>
-
-<!-- Navbar -->
-<header class="navbar">
-    <div class="auth">
-        <a href="./login.html">Login</a>
-        <a href="./signup.html" class="signup">Create Account</a>
-    </div>
-
-    <nav class="nav-links">
-        <a href="./index.html">Home</a>
-        <a href="./womensafety.html">Women Safety</a>
-        <a href="./report issue.html">Complaints</a>
-        <a href="./about us.html">About Us</a>
-        <a href="./contact us.html">Contact Us</a>
-    </nav>
-</header>
-
-<!-- Main Layout -->
-<div class="container">
-
-    <!-- Sidebar -->
-    <aside class="sidebar">
-        <h2>Dashboard</h2>
-        <button onclick="location.href='./report issue.html'">Report Issue</button>
-        <button onclick="location.href='./my complaint.html'">My Complaints</button>
-        <button onclick="location.href='./complaint status.html'">Complaint Status</button>
-        <button onclick="location.href='./womensafety.html'">Emergency Help</button>
-        <button onclick="location.href='./settings.html'">Settings</button>
-        <button onclick="location.href='./category.html'">Category-Wise</button>
-    </aside>
-
-    <!-- Main Content -->
-    <section class="main-area">
-
-        <!-- Image Slider -->
-        <div class="slider">
-            <div class="slides" id="slides">
-                <img src="./Potholes.webp" alt="Potholes">
-                <img src="./Garbage Overflow.jpg" alt="Garbage">
-                <img src="./Broken Street Lights.jpg" alt="Street Lights">
-                <img src="./Water Leakage.jpg" alt="Water Leakage">
-                <img src="./Open Drains.webp" alt="Road Damage">
-                <img src="./Unsafe Public Places.jpg" alt="Public Safety">
-            </div>
-
-            <button class="nav prev" onclick="moveSlide(-1)">❮</button>
-            <button class="nav next" onclick="moveSlide(1)">❯</button>
-
-            <div class="counter" id="counter">1 / 6</div>
+    <!-- Navbar -->
+    <header class="navbar glass-nav"
+        style="padding: 15px 40px; display:flex; justify-content:space-between; align-items:center;">
+        <div class="auth" id="authSection" style="display:flex; gap:15px; align-items:center;">
+            <!-- Handled by CityCore.js -->
+            <div style="color:white; font-size:12px; opacity:0.6;">Initializing...</div>
         </div>
 
-        <!-- Text Content (Below Image) -->
-        <div class="content">
-            <h1>Crowdsourced Civic Issue Reporting</h1>
+        <nav class="nav-links" style="display:flex; gap:20px;">
+            <a href="index.html" style="color:var(--text-main); text-decoration:none; font-weight:600;">Home</a>
+            <a href="womensafety.html" style="color:var(--text-main); text-decoration:none;">Women Safety</a>
+            <a href="report issue.html" style="color:var(--text-main); text-decoration:none;">Complaints</a>
+            <a href="about us.html" style="color:var(--text-main); text-decoration:none;">About Us</a>
+            <a href="contact us.html" style="color:var(--text-main); text-decoration:none;">Contact Us</a>
+        </nav>
+    </header>
 
-            <p>
-                This platform empowers citizens to actively participate in improving
-                their city by reporting civic issues directly to government authorities.
-            </p>
+    <!-- Main Layout -->
+    <div class="dashboard-layout">
+        <aside class="side-navigation glass-card">
+            <h2>Dashboard</h2>
+            <a href="report issue.html" class="btn-nav">📝 Report Issue</a>
+            <a href="my complaint.html" class="btn-nav">📁 Complaints</a>
+            <a href="complaint status.html" class="btn-nav">📊 Complaint Status</a>
+            <a href="womensafety.html" class="btn-nav" style="color:#fb7185;">🚨 Emergency Help</a>
+            <a href="settings.html" class="btn-nav">⚙️ Settings</a>
+            <a href="category.html" class="btn-nav">🗂️ Category-Wise</a>
 
-            <p>
-                By using technology and community participation, the system ensures
-                transparency, accountability, and faster resolution of problems.
-            </p>
+            <div style="margin: 20px 0; border-top: 1px solid var(--glass-border);"></div>
+            <a href="admin-login.html" class="btn"
+                style="background:linear-gradient(135deg, #8b5cf6, #ec4899); text-decoration:none; display:block; text-align:center;">🔐
+                Admin Login</a>
+        </aside>
 
-            <p>
-                Authorities can analyze issue trends, prioritize resources, and
-                enhance public service delivery using centralized data.
-            </p>
+        <main class="main-content-area">
+            <!-- Image Slider -->
+            <div class="slider glass-card" style="padding:0; overflow:hidden; border-radius:16px;">
+                <div class="slides" id="slides">
+                    <img src="./Potholes.webp" alt="Potholes" loading="lazy" decoding="async">
+                    <img src="./Garbage Overflow.jpg" alt="Garbage" loading="lazy" decoding="async">
+                    <img src="./Broken Street Lights.jpg" alt="Street Lights" loading="lazy" decoding="async">
+                    <img src="https://images.unsplash.com/photo-1590082873752-627917786f04?auto=format&fit=crop&q=80&w=1200"
+                        alt="City Support" loading="lazy" decoding="async">
+                </div>
 
-            <div class="problem-box">
-                <h3>Common Civic Issues</h3>
-                <ul>
-                    <li>Potholes</li>
-                    <li>Garbage Overflow</li>
-                    <li>Broken Street Lights</li>
-                    <li>Water Leakage</li>
-                    <li>Open Drains</li>
-                    <li>Unsafe Public Places</li>
-                </ul>
+                <button class="nav prev" onclick="moveSlide(-1)">❮</button>
+                <button class="nav next" onclick="moveSlide(1)">❯</button>
+                <div class="counter" id="counter">1 / 4</div>
             </div>
-        </div>
 
-    </section>
-</div>
+            <!-- Content Area -->
+            <div class="content glass-card animate-in">
+                <h1
+                    style="background: linear-gradient(to right, #4f46e5, #8b5cf6); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                    Community Civic Reporting</h1>
+                <p style="color:var(--text-muted);">Empowering citizens to report issues directly to authorities with
+                    transparency and accountability.</p>
 
-<!-- Footer -->
-<footer class="footer">
-    <div class="footer-about">
-        <h3>About Us</h3>
-        <p>
-            A digital governance platform bridging citizens and government bodies
-            to ensure transparent, efficient, and timely civic issue resolution.
-        </p>
+                <div class="problem-box"
+                    style="background:rgba(79, 70, 229, 0.1); border:1px solid rgba(79, 70, 229, 0.2); padding:20px; border-radius:12px; margin-top:20px;">
+                    <h3 style="color:#8b5cf6;">Track & Resolve</h3>
+                    <ul style="color:var(--text-main); margin-left:20px;">
+                        <li>Real-time issue tracking</li>
+                        <li>Community voting for priority</li>
+                        <li>Direct admin resolution proof</li>
+                        <li>Emergency women safety assistance</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
     </div>
 
-    <div class="footer-contact">
-        <h3>Contact Us</h3>
-        <p>Email: support@civicissuesystem.in</p>
-        <p>Phone: +91 98765 43210</p>
-        <p>Address: Smart City Office, Chennai, India</p>
-    </div>
+    <!-- Footer -->
+    <footer class="footer"
+        style="background:rgba(15, 23, 42, 0.95); padding:40px 20px; border-top:1px solid var(--glass-border);">
+        <p class="copyright" style="text-align:center; color:var(--text-muted); font-size:14px;">© 2026 PublicFix System
+            | Speed Optimized Architecture</p>
+    </footer>
 
-    <p class="copyright">
-        © 2026 Civic Issue Reporting System | All Rights Reserved
-    </p>
-</footer>
+    <!-- Modular Scripts -->
+    <script type="module">
+        import { CityCore } from './core.js';
+        import { UIService } from './ui.js';
 
-<!-- Slider Script -->
-<script>
-let index = 0;
-const slides = document.getElementById("slides");
-const total = slides.children.length;
-const counter = document.getElementById("counter");
+        // Initialize Services
+        CityCore.initAuthMonitor("authSection");
+        UIService.initSlider("slides", "counter");
 
-function moveSlide(step) {
-    index += step;
-    if (index < 0) index = total - 1;
-    if (index >= total) index = 0;
-    slides.style.transform = `translateX(-${index * 100}%)`;
-    counter.innerText = `${index + 1} / ${total}`;
-}
-
-setInterval(() => moveSlide(1), 4000);
-</script>
-
+        // Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js').catch(console.error);
+            });
+        }
+    </script>
 </body>
+
 </html>
