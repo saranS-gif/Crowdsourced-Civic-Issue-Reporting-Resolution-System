@@ -1,5 +1,7 @@
-<!DOCTYPE html>
+
+        <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Contact Us | Civic Issue Reporting System</title>
@@ -37,10 +39,11 @@
             padding: 30px;
             margin-bottom: 25px;
             border-left: 5px solid #0b3c5d;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
 
-        h1, h2 {
+        h1,
+        h2 {
             color: #0b3c5d;
         }
 
@@ -55,7 +58,8 @@
             margin-top: 15px;
         }
 
-        input, textarea {
+        input,
+        textarea {
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
@@ -89,41 +93,62 @@
         }
     </style>
 </head>
+
 <body>
 
-<header class="navbar">
-    <h2>Contact Us</h2>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="about us.html">About Us</a>
-        <a href="contact us.html">Contact Us</a>
-    </nav>
-</header>
+    <header class="navbar">
+        <h2>Contact Us</h2>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about us.html">About Us</a>
+            <a href="contact us.html">Contact Us</a>
+        </nav>
+    </header>
 
-<div class="content">
+    <div class="content">
 
-    <section class="contact-box">
-        <h1>Get in Touch</h1>
-        <p><strong>Email:</strong> support@civicissuesystem.in</p>
-        <p><strong>Phone:</strong> +91 98765 43210</p>
-        <p><strong>Office Address:</strong> Smart City Office, Chennai, India</p>
-    </section>
+        <section class="contact-box">
+            <h1>Get in Touch</h1>
+            <p><strong>Email:</strong> support@civicissuesystem.in</p>
+            <p><strong>Phone:</strong> +91 98765 43210</p>
+            <p><strong>Office Address:</strong> Smart City Office, Chennai, India</p>
+        </section>
 
-    <section>
-        <h2>Send Us a Message</h2>
-        <form>
-            <input type="text" placeholder="Your Name">
-            <input type="email" placeholder="Your Email">
-            <textarea placeholder="Your Message"></textarea>
-            <button type="submit">Submit</button>
-        </form>
-    </section>
+        <section>
+            <h2>Send Us a Message</h2>
+            <form>
+                <input type="text" placeholder="Your Name">
+                <input type="email" placeholder="Your Email">
+                <textarea placeholder="Your Message"></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
 
-</div>
+    </div>
 
-<footer class="footer">
-    © 2026 Civic Issue Reporting System | All Rights Reserved
-</footer>
+    <footer class="footer">
+        © 2026 Civic Issue Reporting System | All Rights Reserved
+    </footer>
 
+    <script type="module">
+        import { auth } from "./firebase.js";
+        import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
+
+        const nav = document.querySelector("nav");
+        const authLink = document.createElement("a");
+        authLink.style.fontWeight = "bold";
+        nav.appendChild(authLink);
+
+        onAuthStateChanged(auth, user => {
+            if (user) {
+                authLink.href = "profile.html";
+                authLink.innerText = "👤 " + (user.displayName ? user.displayName.split(" ")[0] : "Profile");
+            } else {
+                authLink.href = "login.html";
+                authLink.innerText = "Login";
+            }
+        });
+    </script>
 </body>
+
 </html>
